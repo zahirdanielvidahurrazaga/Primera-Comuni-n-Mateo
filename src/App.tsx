@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import Gallery from '@/components/Gallery';
 import UploadButton from '@/components/UploadButton';
+import CuentaRegresiva from '@/components/CuentaRegresiva';
+import { useApertura } from '@/lib/apertura';
 import { EVENT } from '@/lib/event';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function App() {
   const [guestName, setGuestName] = useState<string | null>(null);
   const [uploadCount, setUploadCount] = useState(0);
+  const apertura = useApertura();
 
   useEffect(() => {
     const saved = localStorage.getItem('guest_name');
@@ -91,7 +94,9 @@ export default function App() {
               <Gallery refreshKey={uploadCount} />
             </div>
 
-            <UploadButton guestName={guestName} onUploadSuccess={() => setUploadCount(n => n + 1)} />
+            {apertura.abierto
+              ? <UploadButton guestName={guestName} onUploadSuccess={() => setUploadCount(n => n + 1)} />
+              : <CuentaRegresiva a={apertura} />}
           </motion.div>
         )}
       </AnimatePresence>

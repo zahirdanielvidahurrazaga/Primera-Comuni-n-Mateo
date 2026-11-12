@@ -47,6 +47,14 @@ export const EVENT = {
     },
   ],
 
+  /**
+   * Las fotos se pueden subir a partir de la misa (hora de Puebla, UTC−6 todo el año).
+   * Antes, en lugar de los botones de Cámara/Galería sale una cuenta regresiva.
+   * Para probar antes: abrir la galería con `?prueba` en la URL (queda guardado en ese teléfono;
+   * `?prueba=0` lo quita). Es un candado del lado del navegador, no de la base.
+   */
+  aperturaFotos: new Date('2026-12-05T11:00:00-06:00'),
+
   frase: 'Que este encuentro con Jesús sea para mí luz en el camino de la vida.',
 
   hashtag: '#PrimeraComuniónDeMateo',

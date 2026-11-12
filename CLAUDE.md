@@ -181,4 +181,5 @@ muerta el día de la fiesta.
 1. ~~Fecha y lugar~~ → cargados 11-nov. 12-nov: la bienvenida hace de invitación (Misa · Recepción con botón "Cómo llegar"; enlaces en `EVENT.lugares`, ambos en Puebla).
 2. ~~Supabase~~ → hecho 12-nov (ver Base de datos).
 3. **Desplegar** en Cloudflare Pages (mismas 2 variables) y `npm run qr -- <url>`.
-4. **Revisar que la tarea anti-pausa siga corriendo** unos días antes del evento (Actions en GitHub) y entrar a la galería para confirmar que responde.
+4. Subida de fotos BLOQUEADA hasta `EVENT.aperturaFotos` (5-dic 11:00) con cuenta regresiva (`CuentaRegresiva.tsx`, `lib/apertura.ts`); `?prueba` la abre en ese teléfono, `?prueba=0` la cierra. Candado solo de navegador.
+5. **Revisar que la tarea anti-pausa siga corriendo** unos días antes del evento (Actions en GitHub) y entrar a la galería para confirmar que responde.
