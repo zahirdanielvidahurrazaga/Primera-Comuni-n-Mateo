@@ -5,6 +5,8 @@ escaneando un QR en las mesas. Sin registro, sin apps que instalar.
 
 **Este archivo es la fuente de verdad del proyecto.** Léelo completo al retomar.
 
+Repo: `github.com/zahirdanielvidahurrazaga/Primera-Comuni-n-Mateo` (primer push 11-nov-2026; `fuentes/` y `dist/` fuera de git).
+
 Copiada el 24-oct-2026 de `~/Developer/comunion-grecia` (misma app: masonry en
 tiempo real, Polaroid con firma, lightbox, corazones, panel `/#admin` con ZIP,
 QR imprimible) con el diseño rehecho.
@@ -16,8 +18,10 @@ QR imprimible) con el diseño rehecho.
 | | |
 |---|---|
 | Niño | **Mateo** |
-| Fecha | **PENDIENTE** (la familia no la ha confirmado) |
-| Lugar | **PENDIENTE** |
+| Nombre completo | Mateo Pérez Osorio |
+| Fecha | **5 de diciembre de 2026** |
+| Misa | 11:00 a. m. — Parroquia Ntra. Sra. de Juquilita, calle Veracruz s/n, col. México 83 |
+| Recepción | 3:00 p. m. — jardín en Calle Margarita 4809, col. Viveros del Valle |
 | Frase | "Que este encuentro con Jesús sea para mí luz en el camino de la vida." |
 
 Todos estos datos viven en **`src/lib/event.ts`** (`fechaLarga`, `lugar`,
@@ -99,16 +103,18 @@ su teléfono, el corazón cambia sin estallido.
 
 ---
 
-## Base de datos — PENDIENTE
+## Base de datos
 
-Todavía **no hay proyecto de Supabase** para Mateo (ni `.env.local`).
-`supabase/schema.sql` (copiado de Grecia, idempotente) es la fuente de verdad:
-tablas `photos` + `photo_likes`, RLS abierta a propósito (invitados sin registro),
-`photo_likes` con `REPLICA IDENTITY FULL` (sin eso los contadores no bajan al
-quitar corazón), bucket público `communion-photos`.
+Proyecto Supabase **`hcsjxragwnddyecnougg`** ("PC_Mateo", us-east-1, plan gratis), creado
+12-nov-2026 en la cuenta de Zahir donde viven Portafolio/CriCri/Boda Diana y Antonio
+(NO en "Naturalaguas" — compartir con Grecia cruzaría fotos: la app no filtra por evento).
+`supabase/schema.sql` APLICADO y verificado 12-nov: 6 políticas, bucket `communion-photos`
+público, realtime en `photos` y `photo_likes`, `photo_likes` con REPLICA IDENTITY FULL,
+REST con la anon → 200. `.env.local` listo (gitignored).
 
-Ojo: la cuenta gratis "Naturalaguas" (la de Grecia) ya está en su tope de 2
-proyectos activos.
+**Anti-pausa:** `.github/workflows/mantener-activo.yml` (copia de la de Grecia) consulta la
+galería cada 2 días con la anon key. Ojo: GitHub apaga las tareas programadas si el repo
+pasa 60 días sin commits.
 
 Para correr SQL: POST a `api.supabase.com/v1/projects/<ref>/database/query`
 **con curl, no python-urllib** (Cloudflare bloquea ese user-agent).
@@ -172,7 +178,7 @@ muerta el día de la fiesta.
 
 ## Lo que falta
 
-1. **Fecha y lugar** (ver arriba).
-2. **Supabase**: crear proyecto, aplicar `supabase/schema.sql`, `.env.local`.
+1. ~~Fecha y lugar~~ → cargados 11-nov (la ciudad no la dieron: `ciudad` en null).
+2. ~~Supabase~~ → hecho 12-nov (ver Base de datos).
 3. **Desplegar** en Cloudflare Pages (mismas 2 variables) y `npm run qr -- <url>`.
-4. **Despertar Supabase** unos días antes del evento.
+4. **Revisar que la tarea anti-pausa siga corriendo** unos días antes del evento (Actions en GitHub) y entrar a la galería para confirmar que responde.

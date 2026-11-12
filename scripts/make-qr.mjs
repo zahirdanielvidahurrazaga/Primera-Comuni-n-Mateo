@@ -23,7 +23,7 @@ if (!url) {
 }
 
 /** Fecha corta de la tarjeta (ej. '12 · XII · 2026'); vacía hasta que la familia la confirme */
-const FECHA = '';
+const FECHA = '5 · XII · 2026';
 const MARFIL = '#F5F2EC';
 const TINTA  = '#3B3D52';
 

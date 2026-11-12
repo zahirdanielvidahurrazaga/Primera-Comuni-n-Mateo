@@ -15,12 +15,13 @@ export const EVENT = {
   titulo: 'Mi Primera Comunión',
 
   /**
-   * PENDIENTE: la familia aún no confirma fecha ni lugar.
-   * Mientras sean null, la pantalla de bienvenida simplemente no los muestra.
-   * Ejemplo: fechaLarga: '12 de diciembre de 2026', lugar: 'Parroquia de San José', ciudad: 'Puebla, Pue.'
+   * Datos que mandó la familia (WhatsApp 10-nov-2026):
+   *   Misa 11:00 a. m. — Parroquia Ntra. Sra. de Juquilita, calle Veracruz s/n, col. México 83
+   *   Recepción 3:00 p. m. — jardín en Calle Margarita 4809, col. Viveros del Valle
+   * La bienvenida muestra fecha + lugar de la misa. La ciudad no la dieron: null = no se muestra.
    */
-  fechaLarga: null as string | null,
-  lugar: null as string | null,
+  fechaLarga: '5 de Diciembre de 2026' as string | null,
+  lugar: 'Parroquia Ntra. Sra. de Juquilita' as string | null,
   ciudad: null as string | null,
 
   frase: 'Que este encuentro con Jesús sea para mí luz en el camino de la vida.',

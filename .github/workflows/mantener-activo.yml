@@ -1,0 +1,21 @@
+# Supabase gratuito se pausa a los 7 días sin actividad (le pasó a la boda de
+# Mariana). Esta tarea le hace una consulta cada 2 días para que la galería
+# siga despierta hasta después de la comunión (5-dic-2026).
+# La llave es la ANÓNIMA: es pública por diseño (ya va en el sitio publicado).
+# Ojo: GitHub apaga las tareas programadas si el repo pasa 60 días sin commits.
+name: Mantener activa la galería
+on:
+  schedule:
+    - cron: '17 15 */2 * *'   # cada 2 días, 9:17 a. m. de México
+  workflow_dispatch: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consultar Supabase
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' \
+            "https://hcsjxragwnddyecnougg.supabase.co/rest/v1/photos?select=id&limit=1" \
+            -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjc2p4cmFnd25kZHllY25vdWdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0NTA4MzUsImV4cCI6MjExMDAyNjgzNX0.ZtDoWqzL5X67KDyTlXszyKHDAiuM2RaIWKmJ0d0FFpg" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjc2p4cmFnd25kZHllY25vdWdnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ0NTA4MzUsImV4cCI6MjExMDAyNjgzNX0.ZtDoWqzL5X67KDyTlXszyKHDAiuM2RaIWKmJ0d0FFpg")
+          echo "Supabase respondió: $code"
+          test "$code" = "200"
