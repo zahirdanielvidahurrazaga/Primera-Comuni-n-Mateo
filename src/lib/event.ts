@@ -18,11 +18,34 @@ export const EVENT = {
    * Datos que mandó la familia (WhatsApp 10-nov-2026):
    *   Misa 11:00 a. m. — Parroquia Ntra. Sra. de Juquilita, calle Veracruz s/n, col. México 83
    *   Recepción 3:00 p. m. — jardín en Calle Margarita 4809, col. Viveros del Valle
-   * La bienvenida muestra fecha + lugar de la misa. La ciudad no la dieron: null = no se muestra.
+   * La bienvenida muestra fecha + lugar de la misa. Ambos en Puebla (la ciudad no se muestra en la tarjeta).
    */
   fechaLarga: '5 de Diciembre de 2026' as string | null,
   lugar: 'Parroquia Ntra. Sra. de Juquilita' as string | null,
   ciudad: null as string | null,
+
+  /**
+   * Botones "Cómo llegar" de la bienvenida (la galería también hace de invitación).
+   * `mapa` = enlace de Google Maps que mandó la familia; null = no se muestra el botón.
+   */
+  lugares: [
+    {
+      tipo: 'Misa',
+      hora: '11:00 a. m.',
+      nombre: 'Parroquia Ntra. Sra. de Juquilita',
+      direccion: 'Calle Veracruz s/n, col. México 83, Puebla',
+      // Por nombre + dirección: Google Maps resuelve la parroquia.
+      mapa: 'https://www.google.com/maps/search/?api=1&query=Parroquia+Nuestra+Se%C3%B1ora+de+Juquilita%2C+Calle+Veracruz%2C+M%C3%A9xico+83%2C+Puebla%2C+Pue.' as string | null,
+    },
+    {
+      tipo: 'Recepción',
+      hora: '3:00 p. m.',
+      nombre: 'Jardín',
+      direccion: 'Calle Margarita 4809, col. Viveros del Valle, Puebla',
+      // Pin exacto que mandó la familia (12-nov-2026).
+      mapa: 'https://www.google.com/maps/search/?api=1&query=19.070362%2C-98.148361' as string | null,
+    },
+  ],
 
   frase: 'Que este encuentro con Jesús sea para mí luz en el camino de la vida.',
 

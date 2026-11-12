@@ -178,7 +178,7 @@ muerta el día de la fiesta.
 
 ## Lo que falta
 
-1. ~~Fecha y lugar~~ → cargados 11-nov (la ciudad no la dieron: `ciudad` en null).
+1. ~~Fecha y lugar~~ → cargados 11-nov. 12-nov: la bienvenida hace de invitación (Misa · Recepción con botón "Cómo llegar"; enlaces en `EVENT.lugares`, ambos en Puebla).
 2. ~~Supabase~~ → hecho 12-nov (ver Base de datos).
 3. **Desplegar** en Cloudflare Pages (mismas 2 variables) y `npm run qr -- <url>`.
 4. **Revisar que la tarea anti-pausa siga corriendo** unos días antes del evento (Actions en GitHub) y entrar a la galería para confirmar que responde.

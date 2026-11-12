@@ -77,7 +77,32 @@ export default function WelcomeScreen({ onJoin }: WelcomeScreenProps) {
                   {EVENT.fechaLarga && (
                     <p className="italic tracking-[0.06em]" style={{ fontSize: '1.02rem' }}>{EVENT.fechaLarga}</p>
                   )}
-                  {EVENT.lugar && (
+                  {EVENT.lugares.length > 0 ? (
+                    <div className="mt-4 grid grid-cols-2 gap-x-4 text-[var(--accent-dark)]">
+                      {EVENT.lugares.map((l, i) => (
+                        <div key={l.tipo} className={`flex flex-col items-center px-1 ${i > 0 ? 'border-l border-[var(--silver)]/60' : ''}`}>
+                          <p className="uppercase tracking-[0.24em] font-medium" style={{ fontSize: '0.68rem' }}>{l.tipo}</p>
+                          <p className="italic mt-0.5" style={{ fontSize: '0.95rem' }}>{l.hora}</p>
+                          <p className="mt-1 leading-tight text-[var(--foreground)]/80" style={{ fontSize: '0.8rem' }}>{l.nombre}</p>
+                          {l.mapa && (
+                            <a
+                              href={l.mapa}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-2 inline-flex items-center gap-1 rounded-full border border-[var(--accent)]/70 px-3 py-1 font-sans text-[var(--accent-dark)] active:scale-95 transition-transform"
+                              style={{ fontSize: '0.72rem', letterSpacing: '0.04em' }}
+                            >
+                              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                                <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />
+                                <circle cx="12" cy="9.5" r="2.5" />
+                              </svg>
+                              Cómo llegar
+                            </a>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : EVENT.lugar && (
                     <p className="mt-1 uppercase tracking-[0.22em]" style={{ fontSize: '0.82rem' }}>{EVENT.lugar}</p>
                   )}
                   {EVENT.ciudad && (
